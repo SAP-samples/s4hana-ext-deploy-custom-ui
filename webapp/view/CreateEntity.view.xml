@@ -1,0 +1,83 @@
+<mvc:View controllerName="sap.ui.equipment.EquipmentCRUD.controller.CreateEntity" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title="">
+				<f:content>
+					<!--<Label text="UUID" required="true"/>-->
+					<!--<Input name="SAP_UUID" id="SAP_UUID_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"-->
+					<!--	enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="{= ${viewModel>/mode} === 'edit'? false: true}"-->
+					<!--	value="{ path: 'SAP_UUID', type: 'sap.ui.model.odata.type.Guid' , constraints:{ nullable:false } }"/>-->
+					<Label text="Equipment Number" required="false"/>
+					<Input name="EquipmentNumber" id="EquipmentNumber_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'EquipmentNumber', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:20 } }"/>
+					<Label text="Equipment Type" required="false"/>
+					<!--<Input name="EquipmentType" id="EquipmentType_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"-->
+					<!--	value="{ path: 'EquipmentType', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:2 } }">-->
+					<!--	<layoutData>-->
+					<!--		<l:GridData span="XL1 L2 M2 S4"/>-->
+					<!--	</layoutData>-->
+					<!--</Input>-->
+					<Input name="EquipmentType" id="EquipmentType_id" type="Text" placeholder="Enter Product Type ..." showSuggestion="true"
+						showValueHelp="true" valueHelpRequest="handleValueHelp" valueHelpOnly="true"
+						value="{ path: 'EquipmentType', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:2 } }">
+						<layoutData>
+							<l:GridData span="XL1 L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input name="EquipmentType_Text" id="EquipmentType_Text_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="false"
+						visible="true" value="{ path: 'EquipmentType_Text', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:60 } }"/>
+					<Label text="Manufacturer" required="false"/>
+					<Input name="Manufacturer" id="Manufacturer_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'Manufacturer', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:20 } }"/>
+					<Label text="Technical Type ID" required="false"/>
+					<Input name="TechnicalTypeID" id="TechnicalTypeID_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'TechnicalTypeID', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:20 } }"/>
+					<Label text="Link to Manufacturer Specification" required="false"/>
+					<Input name="LinktoManufacturerSpecificat" id="LinktoManufacturerSpecificat_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="true" visible="true"
+						value="{ path: 'LinktoManufacturerSpecificat', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:80 } }"/>
+					<Label text="" required="false"/>
+					<Link text="{LinktoManufacturerSpecificat}" target="_blank" href="{LinktoManufacturerSpecificat}"/>
+					<Label text="Purchase Price" required="false"/>
+					<Input name="PurchasePrice_V" id="PurchasePrice_V_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'PurchasePrice_V', type: 'sap.ui.model.odata.type.Decimal' , constraints:{ precision:16, scale:2 } }"/>
+					<Label text="Currency" required="false"/>
+					<Input name="Currency" id="PurchasePrice_C_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'PurchasePrice_C', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:5 } }" showValueHelp="true"
+						valueHelpRequest="handleValueHelpC">
+						<layoutData>
+							<l:GridData span="XL1 L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input name="PurchasePrice_C_Text" id="PurchasePrice_C_Text_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="false"
+						visible="true" value="{ path: 'PurchasePrice_C_Text', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:40 } }"/>
+					<Label text="Purchase Date" required="false"/>
+					<DatePicker name="PurchaseDate" value="{ path: 'PurchaseDate', type: 'sap.ui.model.type.DateTime'}" id="PurchaseDate_id" enabled="true"
+						visible="true"/>
+					<Label text="Operation Time" required="false"/>
+					<DatePicker name="OperationTime" value="{ path: 'OperationTime', type: 'sap.ui.model.type.DateTime'}" id="OperationTime_id" enabled="true"
+						visible="true"/>
+					<Label text="Equipment Status" required="false"/>
+					<Input name="EquipmentStatus" id="EquipmentStatus_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'EquipmentStatus', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:2 } }"
+						showValueHelp="true" valueHelpRequest="handleValueHelpS" valueHelpOnly="true">
+						<layoutData>
+							<l:GridData span="XL1 L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input name="EquipmentStatus_Text" id="EquipmentStatus_Text_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="false"
+						visible="true" value="{ path: 'EquipmentStatus_Text', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:60 } }"/>
+				</f:content>
+			</f:SimpleForm>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"></semantic:CancelAction>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>

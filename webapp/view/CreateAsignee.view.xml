@@ -1,0 +1,55 @@
+<mvc:View controllerName="sap.ui.equipment.EquipmentCRUD.controller.CreateAsignee" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title="">
+				<f:content>
+					<Label text="UUID" required="false"/>
+					<Label text="User ID" required="false"/>
+					<Input name="UserID" id="UserID_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/editable} ? true: false}" visible="true"
+						value="{ path: 'UserID', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:20 } }" editable="true"/>
+					<Label text="First Name" required="false"/>
+					<Input name="FirstName" id="FirstName_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/editable} ? true: false}" visible="true"
+						value="{ path: 'FirstName', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:60 } }"/>
+					<Label text="Last Name" required="false"/>
+					<Input name="LastName_Text" id="EquipmentType_Text_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/editable} ? true: false}" visible="true"
+						value="{ path: 'LastName', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:60 } }"/>
+					<Label text="BookedFrom" required="false"/>
+					<DatePicker name="BookedFrom" value="{ path: 'BookedFrom', type: 'sap.ui.model.type.DateTime'}" id="PurchaseDate_id"
+						enabled="{= ${viewModel>/editable} ? true: false}" visible="true"/>
+					<Label text="Booked To" required="false"/>
+					<DatePicker name="BookedTo" value="{ path: 'BookedTo', type: 'sap.ui.model.type.DateTime'}" id="OperationTime_id"
+						enabled="{= ${viewModel>/editable} ? true: false}" visible="true"/>
+					<Label text="Booking Status" required="false"/>
+					<Input name="BookingStatus" id="bookingStatus_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/editable} ? true: false}" visible="true"
+						value="{ path: 'BookingStatus', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:2 } }" showValueHelp="true"
+						valueHelpRequest="handleValueHelpB" valueHelpOnly="true">
+						<layoutData>
+							<l:GridData span="XL1 L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input name="BookingStatus_Text" id="EquipmentStatus_Text_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="false"
+						visible="true" value="{ path: 'BookingStatus_Text', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:60 } }"/>
+				</f:content>
+			</f:SimpleForm>
+		</semantic:content>
+		<semantic:editAction>
+			<semantic:EditAction id="editAssigne" press="onEditAssigne" enabled="{viewModel>/enableEdit}"/>
+		</semantic:editAction>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"/>
+		</semantic:cancelAction>
+		<semantic:deleteAction>
+			<semantic:DeleteAction id="delete" press="onDeleteAssignee"/>
+		</semantic:deleteAction>
+	</semantic:DetailPage>
+</mvc:View>

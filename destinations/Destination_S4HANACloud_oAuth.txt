@@ -1,0 +1,15 @@
+scope=ADT_0001 /UI5/APP_INDEX_0001 /IWFND/SG_MED_CATALOG_0002
+TrustAll=true
+Name=oAuthDestination
+URL=https\://yourS4HANACloudtenant-api.s4hana.ondemand.com
+audience=https\://yourS4HANACloudtenant.s4hana.ondemand.com
+Type=HTTP
+ProxyType=Internet
+tokenServiceURL=https\://yourS4HANACloudtenant-api.s4hana.ondemand.com/sap/bc/sec/oauth2/token
+tokenServiceUser=yourCommunicationUser
+WebIDEEnabled=true
+WebIDESystem=oAuthDestination
+authnContextClassRef=urn\:oasis\:names\:tc\:SAML\:2.0\:ac\:classes\:X509
+WebIDEUsage=odata_abap,ui5_execute_abap,dev_abap,odata_gen
+Authentication=OAuth2SAMLBearerAssertion
+Description=oAuthDestination

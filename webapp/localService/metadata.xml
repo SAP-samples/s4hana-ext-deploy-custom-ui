@@ -1,0 +1,202 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="YY1_EQUIPMENT_CDS" xml:lang="ro" sap:schema-version="1">
+			<EntityType Name="I_CurrencyType" sap:label="Monedă" sap:content-version="1">
+				<Key><PropertyRef Name="Currency"/></Key><Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="Currency_Text" sap:label="Monedă"
+					sap:quickinfo="Cheie monedă" sap:semantics="currency-code"/><Property Name="Currency_Text" Type="Edm.String" MaxLength="40" sap:label="Descriere" sap:creatable="false" sap:updatable="false"/><Property Name="Decimals" Type="Edm.Byte" sap:label="Poziţii zecimale" sap:quickinfo="Număr de poziţii zecimale"/><Property Name="CurrencyISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Cod ISO"
+					sap:quickinfo="Cod monedă ISO"/><Property Name="AlternativeCurrencyKey" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Cheie alternativă"/><Property Name="IsPrimaryCurrencyForISOCrcy" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Primar"
+					sap:quickinfo="Cod monedă SAP primar pt.cod ISO"/></EntityType>
+			<EntityType Name="I_CurrencyTextType" sap:label="Text monedă" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="Currency"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="to_Language/Language_Text" sap:label="Cheie de limbă"
+					sap:value-list="standard"/><Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="to_Currency/Currency_Text" sap:label="Monedă"
+					sap:quickinfo="Cheie monedă" sap:value-list="standard" sap:semantics="currency-code"/><Property Name="CurrencyName" Type="Edm.String" MaxLength="40" sap:label="Descriere"/><Property Name="CurrencyShortName" Type="Edm.String" MaxLength="15" sap:label="Text scurt"/><NavigationProperty Name="to_Currency" Relationship="YY1_EQUIPMENT_CDS.assoc_953AD32A42F8CC110D2FDAB7C5274BF1"
+					FromRole="FromRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1" ToRole="ToRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"/><NavigationProperty Name="to_Language" Relationship="YY1_EQUIPMENT_CDS.assoc_2FB7ED57453D0981D884820F302AC05F"
+					FromRole="FromRole_assoc_2FB7ED57453D0981D884820F302AC05F" ToRole="ToRole_assoc_2FB7ED57453D0981D884820F302AC05F"/></EntityType>
+			<EntityType Name="I_LanguageType" sap:label="Limbă" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="Language_Text" sap:label="Cheie de limbă"/><Property Name="Language_Text" Type="Edm.String" MaxLength="16" sap:label="Name" sap:quickinfo="Name of Language" sap:creatable="false"
+					sap:updatable="false"/><Property Name="LanguageISOCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Lb.(ISO 639)"
+					sap:quickinfo="Cod de limbă SAP din 2 caractere"/></EntityType>
+			<EntityType Name="YY1_ASSIGNEDTO_EQUIPMENTType" sap:label="AssignedTo" sap:content-version="1">
+				<Key><PropertyRef Name="SAP_UUID"/></Key><Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/><Property Name="SAP_PARENT_UUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/><Property Name="UserID" Type="Edm.String" MaxLength="20" sap:label="UserID"/><Property Name="LastName" Type="Edm.String" MaxLength="20" sap:label="Last Name"/><Property Name="FirstName" Type="Edm.String" MaxLength="20" sap:label="First Name"/><Property Name="BookedFrom" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Booked From"/><Property Name="BookedTo" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Booked To"/><Property Name="BookingStatus" Type="Edm.String" MaxLength="2" sap:text="BookingStatus_Text" sap:label="Booking status"
+					sap:value-list="standard"/><Property Name="BookingStatus_Text" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Description"
+					sap:creatable="false" sap:updatable="false"/><NavigationProperty Name="to_BookingStatus" Relationship="YY1_EQUIPMENT_CDS.assoc_02018E3A81608207C6564E31CF6CE710"
+					FromRole="FromRole_assoc_02018E3A81608207C6564E31CF6CE710" ToRole="ToRole_assoc_02018E3A81608207C6564E31CF6CE710"/><NavigationProperty Name="to_EQUIPMENT" Relationship="YY1_EQUIPMENT_CDS.assoc_A31F59AEF1D99609A7316E61F9CD5BFC"
+					FromRole="ToRole_assoc_A31F59AEF1D99609A7316E61F9CD5BFC" ToRole="FromRole_assoc_A31F59AEF1D99609A7316E61F9CD5BFC"/></EntityType>
+			<EntityType Name="YY1_EQUIPMENTType" sap:label="Equipment" sap:content-version="1">
+				<Key><PropertyRef Name="SAP_UUID"/></Key><Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/><Property Name="EquipmentNumber" Type="Edm.String" MaxLength="20" sap:label="Equipment Number"/><Property Name="EquipmentType" Type="Edm.String" MaxLength="2" sap:text="EquipmentType_Text" sap:label="Equipment Type"
+					sap:value-list="standard"/><Property Name="EquipmentType_Text" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Description"
+					sap:creatable="false" sap:updatable="false"/><Property Name="Manufacturer" Type="Edm.String" MaxLength="20" sap:label="Manufacturer"/><Property Name="TechnicalTypeID" Type="Edm.String" MaxLength="20" sap:label="Technical Type ID"/><Property Name="LinktoManufacturerSpecificat" Type="Edm.String" MaxLength="80" sap:label="Link to Manufacturer Specification"/><Property Name="SAP_Http5" Type="Edm.String" MaxLength="87" sap:display-format="UpperCase" sap:creatable="false" sap:updatable="false"/><Property Name="PurchasePrice_V" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="PurchasePrice_C" sap:label="Purchase Price"/><Property Name="PurchasePrice_C" Type="Edm.String" MaxLength="5" sap:text="PurchasePrice_C_Text" sap:label="Purchase Price"
+					sap:value-list="standard" sap:semantics="currency-code"/><Property Name="PurchasePrice_C_Text" Type="Edm.String" MaxLength="40" sap:label="Descriere" sap:creatable="false" sap:updatable="false"/><Property Name="PurchaseDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Purchase Date"/><Property Name="OperationTime" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Operation Time"/><Property Name="EquipmentStatus" Type="Edm.String" MaxLength="2" sap:text="EquipmentStatus_Text" sap:label="Equipment Status"
+					sap:value-list="standard"/><Property Name="EquipmentStatus_Text" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Description"
+					sap:creatable="false" sap:updatable="false"/><NavigationProperty Name="to_AssignedTo" Relationship="YY1_EQUIPMENT_CDS.assoc_A31F59AEF1D99609A7316E61F9CD5BFC"
+					FromRole="FromRole_assoc_A31F59AEF1D99609A7316E61F9CD5BFC" ToRole="ToRole_assoc_A31F59AEF1D99609A7316E61F9CD5BFC"/><NavigationProperty Name="to_EquipmentStatus" Relationship="YY1_EQUIPMENT_CDS.assoc_66DDDA08363701086E2D1399942DC7E7"
+					FromRole="FromRole_assoc_66DDDA08363701086E2D1399942DC7E7" ToRole="ToRole_assoc_66DDDA08363701086E2D1399942DC7E7"/><NavigationProperty Name="to_EquipmentType" Relationship="YY1_EQUIPMENT_CDS.assoc_54FD5B3AD14AC4AE65863C4C0EF102AE"
+					FromRole="FromRole_assoc_54FD5B3AD14AC4AE65863C4C0EF102AE" ToRole="ToRole_assoc_54FD5B3AD14AC4AE65863C4C0EF102AE"/><NavigationProperty Name="to_PurchasePrice" Relationship="YY1_EQUIPMENT_CDS.assoc_3471D7D4088E8B589C6007C6F85B4310"
+					FromRole="FromRole_assoc_3471D7D4088E8B589C6007C6F85B4310" ToRole="ToRole_assoc_3471D7D4088E8B589C6007C6F85B4310"/><NavigationProperty Name="to__PurchasePrice" Relationship="YY1_EQUIPMENT_CDS.assoc_8DCB35DC41F53C2BA1D1D129BA381634"
+					FromRole="FromRole_assoc_8DCB35DC41F53C2BA1D1D129BA381634" ToRole="ToRole_assoc_8DCB35DC41F53C2BA1D1D129BA381634"/></EntityType>
+			<EntityType Name="YY1_EQUIPMENTSTATUSType" sap:label="Equipment Status" sap:content-version="1">
+				<Key><PropertyRef Name="Code"/></Key><Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="Description" sap:label="Code"/><Property Name="Description" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Description"/></EntityType>
+			<EntityType Name="YY1_EQUIPMENTSTATUS1Type" sap:label="Equipment Booking Status" sap:content-version="1">
+				<Key><PropertyRef Name="Code"/></Key><Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="Description" sap:label="Code"/><Property Name="Description" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Description"/></EntityType>
+			<EntityType Name="YY1_EQUIPMENTTYPEType" sap:label="Equipment Type" sap:content-version="1">
+				<Key><PropertyRef Name="Code"/></Key><Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="Description" sap:label="Code"/><Property Name="Description" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Description"/></EntityType>
+			<Association Name="assoc_2FB7ED57453D0981D884820F302AC05F" sap:content-version="1"><End Type="YY1_EQUIPMENT_CDS.I_CurrencyTextType" Multiplicity="1" Role="FromRole_assoc_2FB7ED57453D0981D884820F302AC05F"/><End Type="YY1_EQUIPMENT_CDS.I_LanguageType" Multiplicity="0..1" Role="ToRole_assoc_2FB7ED57453D0981D884820F302AC05F"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_2FB7ED57453D0981D884820F302AC05F"><PropertyRef Name="Language"/></Principal>
+					<Dependent Role="FromRole_assoc_2FB7ED57453D0981D884820F302AC05F"><PropertyRef Name="Language"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_953AD32A42F8CC110D2FDAB7C5274BF1" sap:content-version="1"><End Type="YY1_EQUIPMENT_CDS.I_CurrencyTextType" Multiplicity="1" Role="FromRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"/><End Type="YY1_EQUIPMENT_CDS.I_CurrencyType" Multiplicity="1" Role="ToRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"><PropertyRef Name="Currency"/></Principal>
+					<Dependent Role="FromRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"><PropertyRef Name="Currency"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_02018E3A81608207C6564E31CF6CE710" sap:content-version="1"><End Type="YY1_EQUIPMENT_CDS.YY1_ASSIGNEDTO_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_02018E3A81608207C6564E31CF6CE710"/><End Type="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTSTATUS1Type" Multiplicity="0..1" Role="ToRole_assoc_02018E3A81608207C6564E31CF6CE710"/></Association>
+			<Association Name="assoc_A31F59AEF1D99609A7316E61F9CD5BFC" sap:content-version="1">
+				<End Type="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_A31F59AEF1D99609A7316E61F9CD5BFC"><OnDelete Action="Cascade"/></End><End Type="YY1_EQUIPMENT_CDS.YY1_ASSIGNEDTO_EQUIPMENTType" Multiplicity="*" Role="ToRole_assoc_A31F59AEF1D99609A7316E61F9CD5BFC"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_assoc_A31F59AEF1D99609A7316E61F9CD5BFC"><PropertyRef Name="SAP_UUID"/></Principal>
+					<Dependent Role="ToRole_assoc_A31F59AEF1D99609A7316E61F9CD5BFC"><PropertyRef Name="SAP_PARENT_UUID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_66DDDA08363701086E2D1399942DC7E7" sap:content-version="1"><End Type="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_66DDDA08363701086E2D1399942DC7E7"/><End Type="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTSTATUSType" Multiplicity="0..1" Role="ToRole_assoc_66DDDA08363701086E2D1399942DC7E7"/></Association>
+			<Association Name="assoc_54FD5B3AD14AC4AE65863C4C0EF102AE" sap:content-version="1"><End Type="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_54FD5B3AD14AC4AE65863C4C0EF102AE"/><End Type="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTTYPEType" Multiplicity="0..1" Role="ToRole_assoc_54FD5B3AD14AC4AE65863C4C0EF102AE"/></Association>
+			<Association Name="assoc_3471D7D4088E8B589C6007C6F85B4310" sap:content-version="1"><End Type="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_3471D7D4088E8B589C6007C6F85B4310"/><End Type="YY1_EQUIPMENT_CDS.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_3471D7D4088E8B589C6007C6F85B4310"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_3471D7D4088E8B589C6007C6F85B4310"><PropertyRef Name="Currency"/></Principal>
+					<Dependent Role="FromRole_assoc_3471D7D4088E8B589C6007C6F85B4310"><PropertyRef Name="PurchasePrice_C"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_8DCB35DC41F53C2BA1D1D129BA381634" sap:content-version="1"><End Type="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_8DCB35DC41F53C2BA1D1D129BA381634"/><End Type="YY1_EQUIPMENT_CDS.I_CurrencyTextType" Multiplicity="*" Role="ToRole_assoc_8DCB35DC41F53C2BA1D1D129BA381634"/></Association>
+			<EntityContainer Name="YY1_EQUIPMENT_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="I_Currency" EntityType="YY1_EQUIPMENT_CDS.I_CurrencyType" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:searchable="true" sap:content-version="1"/><EntitySet Name="I_CurrencyText" EntityType="YY1_EQUIPMENT_CDS.I_CurrencyTextType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="I_Language" EntityType="YY1_EQUIPMENT_CDS.I_LanguageType" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:searchable="true" sap:content-version="1"/><EntitySet Name="YY1_ASSIGNEDTO_EQUIPMENT" EntityType="YY1_EQUIPMENT_CDS.YY1_ASSIGNEDTO_EQUIPMENTType" sap:searchable="true"
+				sap:content-version="1"/><EntitySet Name="YY1_EQUIPMENT" EntityType="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="YY1_EQUIPMENTSTATUS" EntityType="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTSTATUSType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="YY1_EQUIPMENTSTATUS1" EntityType="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTSTATUS1Type" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="YY1_EQUIPMENTTYPE" EntityType="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTTYPEType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+				<AssociationSet Name="assoc_3471D7D4088E8B589C6007C6F85B4310" Association="YY1_EQUIPMENT_CDS.assoc_3471D7D4088E8B589C6007C6F85B4310"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="YY1_EQUIPMENT" Role="FromRole_assoc_3471D7D4088E8B589C6007C6F85B4310"/><End EntitySet="I_Currency" Role="ToRole_assoc_3471D7D4088E8B589C6007C6F85B4310"/></AssociationSet>
+				<AssociationSet Name="assoc_A31F59AEF1D99609A7316E61F9CD5BFC" Association="YY1_EQUIPMENT_CDS.assoc_A31F59AEF1D99609A7316E61F9CD5BFC"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="YY1_EQUIPMENT" Role="FromRole_assoc_A31F59AEF1D99609A7316E61F9CD5BFC"/><End EntitySet="YY1_ASSIGNEDTO_EQUIPMENT" Role="ToRole_assoc_A31F59AEF1D99609A7316E61F9CD5BFC"/></AssociationSet>
+				<AssociationSet Name="assoc_02018E3A81608207C6564E31CF6CE710" Association="YY1_EQUIPMENT_CDS.assoc_02018E3A81608207C6564E31CF6CE710"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="YY1_ASSIGNEDTO_EQUIPMENT" Role="FromRole_assoc_02018E3A81608207C6564E31CF6CE710"/><End EntitySet="YY1_EQUIPMENTSTATUS1" Role="ToRole_assoc_02018E3A81608207C6564E31CF6CE710"/></AssociationSet>
+				<AssociationSet Name="assoc_2FB7ED57453D0981D884820F302AC05F" Association="YY1_EQUIPMENT_CDS.assoc_2FB7ED57453D0981D884820F302AC05F"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="I_CurrencyText" Role="FromRole_assoc_2FB7ED57453D0981D884820F302AC05F"/><End EntitySet="I_Language" Role="ToRole_assoc_2FB7ED57453D0981D884820F302AC05F"/></AssociationSet>
+				<AssociationSet Name="assoc_953AD32A42F8CC110D2FDAB7C5274BF1" Association="YY1_EQUIPMENT_CDS.assoc_953AD32A42F8CC110D2FDAB7C5274BF1"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="I_CurrencyText" Role="FromRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"/><End EntitySet="I_Currency" Role="ToRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"/></AssociationSet>
+				<AssociationSet Name="assoc_54FD5B3AD14AC4AE65863C4C0EF102AE" Association="YY1_EQUIPMENT_CDS.assoc_54FD5B3AD14AC4AE65863C4C0EF102AE"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="YY1_EQUIPMENT" Role="FromRole_assoc_54FD5B3AD14AC4AE65863C4C0EF102AE"/><End EntitySet="YY1_EQUIPMENTTYPE" Role="ToRole_assoc_54FD5B3AD14AC4AE65863C4C0EF102AE"/></AssociationSet>
+				<AssociationSet Name="assoc_66DDDA08363701086E2D1399942DC7E7" Association="YY1_EQUIPMENT_CDS.assoc_66DDDA08363701086E2D1399942DC7E7"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="YY1_EQUIPMENT" Role="FromRole_assoc_66DDDA08363701086E2D1399942DC7E7"/><End EntitySet="YY1_EQUIPMENTSTATUS" Role="ToRole_assoc_66DDDA08363701086E2D1399942DC7E7"/></AssociationSet>
+				<AssociationSet Name="assoc_8DCB35DC41F53C2BA1D1D129BA381634" Association="YY1_EQUIPMENT_CDS.assoc_8DCB35DC41F53C2BA1D1D129BA381634"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="YY1_EQUIPMENT" Role="FromRole_assoc_8DCB35DC41F53C2BA1D1D129BA381634"/><End EntitySet="I_CurrencyText" Role="ToRole_assoc_8DCB35DC41F53C2BA1D1D129BA381634"/></AssociationSet>
+				<FunctionImport Name="YY1_EQUIPMENTSap_upsert" ReturnType="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType" EntitySet="YY1_EQUIPMENT"
+					m:HttpMethod="POST" sap:action-for="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType"><Parameter Name="EquipmentNumber" Type="Edm.String" Mode="In" MaxLength="20"/><Parameter Name="EquipmentType" Type="Edm.String" Mode="In" MaxLength="2"/><Parameter Name="Manufacturer" Type="Edm.String" Mode="In" MaxLength="20"/><Parameter Name="TechnicalTypeID" Type="Edm.String" Mode="In" MaxLength="20"/><Parameter Name="LinktoManufacturerSpecificat" Type="Edm.String" Mode="In" MaxLength="80"/><Parameter Name="PurchasePrice_V" Type="Edm.Decimal" Mode="In" Precision="16" Scale="3"/><Parameter Name="PurchasePrice_C" Type="Edm.String" Mode="In" MaxLength="5"/><Parameter Name="PurchaseDate" Type="Edm.DateTime" Mode="In" Precision="0"/><Parameter Name="OperationTime" Type="Edm.DateTime" Mode="In" Precision="0"/><Parameter Name="EquipmentStatus" Type="Edm.String" Mode="In" MaxLength="2"/></FunctionImport>
+			</EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="YY1_EQUIPMENT_CDS.I_CurrencyTextType/Language">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Language"/><PropertyValue Property="CollectionPath" String="I_Language"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="Language"/><PropertyValue Property="ValueListProperty" String="Language"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Language_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="YY1_EQUIPMENT_CDS.I_CurrencyTextType/Currency">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="Currency"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="YY1_EQUIPMENT_CDS.YY1_ASSIGNEDTO_EQUIPMENTType/BookingStatus">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Equipment Booking Status"/><PropertyValue Property="CollectionPath" String="YY1_EQUIPMENTSTATUS1"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="BookingStatus"/><PropertyValue Property="ValueListProperty" String="Code"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType/EquipmentType">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Equipment Type"/><PropertyValue Property="CollectionPath" String="YY1_EQUIPMENTTYPE"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="EquipmentType"/><PropertyValue Property="ValueListProperty" String="Code"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType/PurchasePrice_C">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="PurchasePrice_C"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType/EquipmentStatus">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Equipment Status"/><PropertyValue Property="CollectionPath" String="YY1_EQUIPMENTSTATUS"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="EquipmentStatus"/><PropertyValue Property="ValueListProperty" String="Code"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="YY1_EQUIPMENT_CDS.YY1_EQUIPMENT_CDS_Entities">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType/EquipmentNumber"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="YY1_EQUIPMENT_CDS.YY1_EQUIPMENTType">
+				<Annotation Term="Common.SemanticKey">
+					<Collection>
+						<PropertyPath>EquipmentNumber</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="YY1_EQUIPMENT_CDS.I_CurrencyType/Currency"><Annotation Term="Common.UnitSpecificScale" Path="Decimals"/></Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/opu/odata/sap/YY1_EQUIPMENT_CDS/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/opu/odata/sap/YY1_EQUIPMENT_CDS/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

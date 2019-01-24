@@ -1,0 +1,85 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="prodrisk.controller.Worklist">
+
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false">
+
+		<semantic:titleHeading>
+			<Title text="{i18n>worklistTitle}"/>
+		</semantic:titleHeading>
+
+		<semantic:content>
+			<IconTabBar id="iconTabBar" select="onQuickFilter" expandable="false" applyContentPadding="True">
+				<items>
+					<IconTabFilter key="all" showAll="true" text="{i18n>worklistTableTitleWithoutCount}" count="{worklistView>/countAll}" iconColor="Positive"/>
+						<IconTabSeparator/>
+						<IconTabFilter key="increased" icon="sap-icon://drill-up" iconColor="Positive" count="{worklistView>/increased}" text="{i18n>WorklistFilterIncreased}"/>
+						<IconTabFilter key="decreased" icon="sap-icon://drill-down" iconColor="Negative" count="{worklistView>/decreased}" text="{i18n>WorklistFilterDecreased}"/>
+							</items>
+							<content>
+			
+			
+			<Table id="table" width="auto" items="{      path: '/YY1_MATCUSTOMCDS',      sorter: {       path: 'Material',       descending: false      } }" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" backgroundDesign="Solid">
+
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+						<ToolbarSpacer/>
+						<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search="onSearch" width="auto">
+						</SearchField>
+					</Toolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="nameColumn">
+						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>tableNameColumn2Title}" id="nameColumn2Title"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>tableNameColumn3Title}" id="nameColumn3Title"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>tableNameColumn4Title}" id="nameColumn4Title"/>
+					</Column>
+				
+				</columns>
+
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<ObjectIdentifier title="{Material}"/>
+						</cells>	
+						<cells>
+							<ObjectIdentifier title="{Plant}"/>
+						</cells>
+							<cells>
+							<ObjectIdentifier title="{StorageLocation}"/>
+						</cells>
+						<cells>
+							<ObjectIdentifier title="{MatlWrhsStkQtyInMatlBaseUnit}"/>
+		                     </cells>
+					</ColumnListItem>
+				</items>
+			<customData>
+			    <sap.ui.core:CustomData key="w5g.dt.editable" value="false" xmlns:sap.ui.core="sap.ui.core" id="__data10"/>
+			</customData>
+			</Table>
+			</content>
+							</IconTabBar>
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{worklistView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+
+	</semantic:SemanticPage>
+
+</mvc:View>
