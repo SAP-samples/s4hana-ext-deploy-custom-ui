@@ -1,19 +1,18 @@
 # SAP S/4HANA Cloud Extensions - Deploy SAP Cloud Platform Fiori App to SAP S/4HANA Cloud
-This simple Fiori UI sample application showcases an extension to an SAP S/4HANA Cloud system. It lists the actual stock movement information (from a custom CDS view) with extended material information (from a custom field).<br/> This very simple app is to be seen in the context of the overall scenario which takes up several focal extensibility topics. The scenario is rather to show how you can do in-app extensions on SAP S/4HANA Cloud, expose a service from a Custom CDS view and consume this service in a custom SAP Fiori UI on SAP Cloud Platform. Furthermore, the scenario includes the topic of deploying the custom UI from SAP Cloud Platform to SAP S/4HANA Cloud as well as a description on transporting extensions from a quality to a productive system. 
+This SAP S/4HANA Cloud sample application is provided to you as part of SAP Extensibility Explorer for SAP S/4HANA Cloud.
+SAP Extensibility Explorer is a central place where anyone involved in the extensibility process can gain insight into various types of extensibility options.
+At the heart of SAP Extensibility Explorer, there is a rich repository of sample scenarios which show, in a hands-on way, how to realize an extensibility requirement leveraging different extensibility patterns.
+
+Find a detailed description of the sample scenario here: http://tiny.cc/s4-deploy-custom-ui.
 
 Requirements
 -------------
 - An account in SAP Cloud Platform with a subaccount in the Neo environment and SAP Web IDE Full Stack enabled.
-- A licensed productive SAP S/4HANA Cloud tenant.
+- An SAP S/4HANA Cloud tenant. This is a commercial paid product.
 
-Set-up Instructions Guide
+Download and Installation
 -------------
-To implement this sample app in your own landscape, you need to do some preparation steps. These steps are outlined in the [set-up instructions guide](https://help.sap.com/viewer/841f379acd104dbf8685b3ad26e66af3/SHIP/en-US). There, you will find more details on the end to end steps, e.g.:
-* Creation of a custom field in SAP S/4HANA Cloud
-* Connection setup of the SAP S/4HANA Cloud system and SAP Cloud Platform (via a communication arrangement)
-* Deployment of the sample app
-* Integration of the custom app on the S/4HANA Cloud Launchpad
-* Transportation of the custom UI and extenstions from a quality to a productive SAP S/4HANA Cloud system
+To implement this sample app in your own landscape, you need to do some preparation steps. These steps are outlined in the [set-up instructions guide](https://help.sap.com/viewer/841f379acd104dbf8685b3ad26e66af3/SHIP/en-US).
 
 Known issues
 ---------------------
