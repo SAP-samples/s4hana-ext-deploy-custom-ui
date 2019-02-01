@@ -1,18 +1,30 @@
 # SAP S/4HANA Cloud Extensions - Deploy SAP Cloud Platform Fiori App to SAP S/4HANA Cloud
-This SAP S/4HANA Cloud sample application is provided to you as part of SAP Extensibility Explorer for SAP S/4HANA Cloud.
-SAP Extensibility Explorer is a central place where anyone involved in the extensibility process can gain insight into various types of extensibility options.
-At the heart of SAP Extensibility Explorer, there is a rich repository of sample scenarios which show, in a hands-on way, how to realize an extensibility requirement leveraging different extensibility patterns.
+This repository contains the sample code for the [Consume a Sample Service tutorial](http://tiny.cc/s4-deploy-custom-ui).  
 
-Find a detailed description of the sample scenario here: http://tiny.cc/s4-deploy-custom-ui.
+*This code is only one part of the tutorial, so please follow the tutorial before attempting to use this code.*
+
+## Description
+
+The [Consume a Custom Service tutorial](http://tiny.cc/s4-deploy-custom-ui) showcases an an extension to an SAP S/4HANA Cloud system. The app uses a Custom Business Object to store ‘Equipment’ which can be booked by employees for temporary use. Within this Custom Business Object, equipment records can be maintained. This equipment may be handed over to your employees for temporary use. The temporary assignment of equipment is maintained in this Custom Business Object as well.
+
+#### SAP Extensibility Explorer
+
+This tutorial is one of multiple tutorials that make up the [SAP Extensibility Explorer](URL here) for SAP S/4HANA Cloud.
+SAP Extensibility Explorer is a central place where anyone involved in the extensibility process can gain insight into various types of extensibility options. At the heart of SAP Extensibility Explorer, there is a rich repository of sample scenarios which show, in a hands-on way, how to realize an extensibility requirement leveraging different extensibility patterns.
+
 
 Requirements
 -------------
 - An account in SAP Cloud Platform with a subaccount in the Neo environment and SAP Web IDE Full Stack enabled.
-- An SAP S/4HANA Cloud tenant. This is a commercial paid product.
+- An SAP S/4HANA Cloud tenant. **This is a commercial paid product.**
+
 
 Download and Installation
 -------------
-To implement this sample app in your own landscape, you need to do some preparation steps. These steps are outlined in the [set-up instructions guide](https://help.sap.com/viewer/841f379acd104dbf8685b3ad26e66af3/SHIP/en-US).
+This repository is a part of the [Import and Test an SAP Fiori App](URL here) step in the tutorial.  Instruction for use are in that step.
+
+To download this sample code, so that it can be used in the tutorial, [please download the zip file by clicking here](https://github.com/SAP/s4hana-ext-deploy-custom-ui/archive/master.zip).  
+
 
 Known issues
 ---------------------
