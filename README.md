@@ -21,8 +21,7 @@ Requirements
 
 Download and Installation
 -------------
-[comment]: # (TODO update the link when the set-up guide is published)
-This repository is a part of the [Import and Test an SAP Fiori App](https://help.sap.com/viewer/DRAFT/841f379acd104dbf8685b3ad26e66af3/SHIP/en-US/e6c1af3ef559470b84fab32d09432454.html) step in the tutorial. Instructions for use can be found in that step.
+This repository is a part of the [Import and Test an SAP Fiori App](https://help.sap.com/viewer/841f379acd104dbf8685b3ad26e66af3/SHIP/en-US/e6c1af3ef559470b84fab32d09432454.html) step in the tutorial. Instructions for use can be found in that step.
 
 [Please download the zip file by clicking here](https://github.com/SAP/s4hana-ext-deploy-custom-ui/archive/master.zip) so that the code can be used in the tutorial.  
 
