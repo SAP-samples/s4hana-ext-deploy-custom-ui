@@ -61,7 +61,7 @@ sap.ui.define([
 			MessageBox.error(
 				this._sErrorText, {
 					id: "metadataErrorMessageBox",
-					details: sDetails,
+					// details: sDetails,
 					styleClass: this._oComponent.getContentDensityClass(),
 					actions: [MessageBox.Action.RETRY, MessageBox.Action.CLOSE],
 					onClose: function (sAction) {
@@ -106,9 +106,9 @@ sap.ui.define([
 			}
 			this._bMessageOpen = true;
 			MessageBox.error(
-				this._sErrorText, {
+				JSON.parse(sDetails.responseText).error.message.value, {
 					id: "serviceErrorMessageBox",
-					details: sDetails.responseText,
+					// details: sDetails.responseText,
 					styleClass: this._oComponent.getContentDensityClass(),
 					actions: [MessageBox.Action.CLOSE],
 					onClose: function () {

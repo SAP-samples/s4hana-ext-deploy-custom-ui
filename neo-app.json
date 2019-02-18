@@ -32,10 +32,11 @@
 		},
 		"description": "SAPUI5 Test Resources"
 	}, {
-		"path": "/S4H_Equipment",
+		"path": "/sap",
 		"target": {
 			"type": "destination",
-			"name": "S4H_Equipment"
+			"name": "S4H_Equipment",
+			"entryPath": "/sap"
 		},
 		"description": "S4H_Equipment"
 	}],
