@@ -32,13 +32,13 @@
 		},
 		"description": "SAPUI5 Test Resources"
 	}, {
-		"path": "/sap",
+		"path": "/sap/opu/odata",
 		"target": {
 			"type": "destination",
 			"name": "S4H_Equipment",
-			"entryPath": "/sap"
+			"entryPath": "/sap/opu/odata"
 		},
-		"description": "S4H_Equipment"
+		"description": "Destination to S/4HANA Cloud System"
 	}],
 	"welcomeFile": "/webapp/test/flpSandbox.html",
 	"sendWelcomeFileRedirect": true
