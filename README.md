@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/s4hana-ext-deploy-custom-ui)](https://api.reuse.software/info/github.com/SAP-samples/s4hana-ext-deploy-custom-ui)
+
 # SAP S/4HANA Cloud Extensions - Deploy SAP Cloud Platform Fiori App to SAP S/4HANA Cloud
 This repository contains the sample code for the [Develop a Custom UI on SAP Cloud Platform and Deploy it to SAP S/4HANA Cloud tutorial](http://tiny.cc/s4-deploy-custom-ui).  
 
