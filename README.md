@@ -39,4 +39,4 @@ If you have issues with this sample, please open a report using [GitHub issues](
 License
 -------
 Copyright © 2020 SAP SE or an SAP affiliate company. All rights reserved.
-This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE file](LICENSES/Apache-2.0.txt).
+This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE file](LICENSES/Apache-2.0.txt).
