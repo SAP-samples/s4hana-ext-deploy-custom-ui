@@ -1,13 +1,13 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/s4hana-ext-deploy-custom-ui)](https://api.reuse.software/info/github.com/SAP-samples/s4hana-ext-deploy-custom-ui)
 
-# SAP S/4HANA Cloud Extensions - Deploy SAP Cloud Platform Fiori App to SAP S/4HANA Cloud
-This repository contains the sample code for the [Develop a Custom UI on SAP Cloud Platform and Deploy it to SAP S/4HANA Cloud tutorial](http://tiny.cc/s4-deploy-custom-ui).  
+# SAP S/4HANA Cloud Extensions - Deploy SAP Business Technology Platform  Fiori App to SAP S/4HANA Cloud
+This repository contains the sample code for the [Develop a Custom UI on SAP Business Technology Platform and Deploy it to SAP S/4HANA Cloud tutorial](http://tiny.cc/s4-deploy-custom-ui).  
 
 *This code is only one part of the tutorial, so please follow the tutorial before attempting to use this code.*
 
 ## Description
 
-The [Develop a Custom UI on SAP Cloud Platform and Deploy it to SAP S/4HANA Cloud tutorial](http://tiny.cc/s4-deploy-custom-ui) showcases an extension to an SAP S/4HANA Cloud system. The app uses a Custom Business Object to store ‘Equipment’ which can be booked by employees for temporary use. Within this Custom Business Object, equipment records can be maintained. This equipment may be handed over to your employees for temporary use. The temporary assignment of equipment is maintained in this Custom Business Object as well.
+The [Develop a Custom UI on SAP Business Technology Platform and Deploy it to SAP S/4HANA Cloud tutorial](http://tiny.cc/s4-deploy-custom-ui) showcases an extension to an SAP S/4HANA Cloud system. The app uses a Custom Business Object to store ‘Equipment’ which can be booked by employees for temporary use. Within this Custom Business Object, equipment records can be maintained. This equipment may be handed over to your employees for temporary use. The temporary assignment of equipment is maintained in this Custom Business Object as well.
 
 #### SAP Extensibility Explorer
 
@@ -17,7 +17,7 @@ SAP Extensibility Explorer is a central place where anyone involved in the exten
 
 Requirements
 -------------
-- An account in SAP Cloud Platform with a subaccount in the Neo environment and SAP Web IDE Full Stack enabled.
+- An account in SAP Business Technology Platform (BTP) with a subaccount in the Neo environment and SAP Web IDE Full Stack enabled.
 - An SAP S/4HANA Cloud tenant. **This is a commercial paid product.**
 
 
